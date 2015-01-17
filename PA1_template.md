@@ -1,9 +1,4 @@
----
-title: "Reproducible Research: Peer Assessment 1"
-output: 
-  html_document:
-    keep_md: true
----
+# Reproducible Research: Peer Assessment 1
 
 
 ## Loading and preprocessing the data
@@ -42,7 +37,7 @@ qplot(daySteps, binwidth = max(daySteps/10), xlab = "Total Steps Per Day",
       ylab = "Frequency", main = "Total Number of Steps Taken Each Day")
 ```
 
-![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-3-1.png) 
 
 **Calculate and report the mean and median total number of steps taken per day**
 
@@ -65,15 +60,15 @@ ggplot(avgSteps, aes(interval, steps)) + geom_line() + xlab("Time Interval") +
       ylab("Average Steps") + ggtitle("Average Daily Activity Pattern") 
 ```
 
-![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-5-1.png) 
 
 **Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?**
 
 ```r
 # find the 5-minute interval that contains the maximum number of steps
-maxInterval <- names(avgSteps)[which(avgSteps == max(avgSteps))]
+maxInterval <- avgSteps[which(avgSteps$steps == max(avgSteps$steps)), 1]
 ```
-The 5-minute interval with the maximum number of average steps taken across all days in dataset is **NA**.
+The 5-minute interval with the maximum number of average steps taken across all days in dataset is **835**.
 
 ## Imputing missing values
 **Calculate and report the total number of missing values in the dataset (i.e. the total number of rows with `NA`s)**
@@ -117,7 +112,7 @@ qplot(newDaySteps, binwidth = max(newDaySteps/10), xlab = "Total Steps Per Day",
       ylab = "Frequency", main = "New Total Number of Steps Taken Each Day")
 ```
 
-![plot of chunk unnamed-chunk-9](figure/unnamed-chunk-9-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-9-1.png) 
 
 ```r
 # Calculate the mean and median
@@ -152,7 +147,7 @@ library(lattice)
 xyplot(x ~ interval | dayType, result, layout=c(1,2), type = "l", ylab = "Number of Steps")
 ```
 
-![plot of chunk unnamed-chunk-11](figure/unnamed-chunk-11-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-11-1.png) 
 
 There are slight differences in the daily activity patterns between weekdays and weekends on average:  
 
